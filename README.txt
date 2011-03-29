@@ -1,5 +1,2 @@
-This is the code for the basics of associating email addresses with
-user profiles: adding, removing, and fetching.
+This is the code for the basic code for providing a profile on GroupServer.
 
-The complexities of verifying email addresses is handled in 
-gs.profile.email.verify.
