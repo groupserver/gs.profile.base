@@ -32,6 +32,7 @@ setup(name='gs.profile.base',
     zip_safe=True,
     install_requires=[
         'setuptools',
+        'Products.CustomUserFolder',
         # -*- Extra requirements: -*-
     ],
     entry_points="""

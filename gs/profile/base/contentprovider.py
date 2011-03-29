@@ -1,7 +1,7 @@
 # coding=utf-8
 from zope.component import createObject
 from AccessControl import getSecurityManager
-from Products.GSProfile.interfaces import IGSUserInfo
+from Products.CustomUserFolder.interfaces import IGSUserInfo
 
 class ProfileContentProvider(object):
     def __init__(self, group, request, view):
