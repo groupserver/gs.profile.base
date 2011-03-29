@@ -3,12 +3,12 @@ from zope.component import createObject
 from AccessControl import getSecurityManager
 from Products.CustomUserFolder.interfaces import IGSUserInfo
 
-class ProfileContentProvider(object):
-    def __init__(self, group, request, view):
+class ContentProvider(object):
+    def __init__(self, user, request, view):
         self.__parent__ = self.view = view
         self.__updated = False
 
-        self.context = self.user = group
+        self.context = self.user = user
         self.request = request
 
         self.__siteInfo = None
