@@ -1,8 +1,8 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 from zope.cachedescriptors.property import Lazy
-from zope.component import createObject
 from gs.content.base.page import SitePage
 from Products.CustomUserFolder.interfaces import IGSUserInfo
+
 
 class ProfilePage(SitePage):
     def __init__(self, user, request):
@@ -11,8 +11,7 @@ class ProfilePage(SitePage):
 
     @Lazy
     def userInfo(self):
-      retval = IGSUserInfo(self.user)
-      assert retval
-      assert not(retval.anonymous)
-      return retval
-
+        retval = IGSUserInfo(self.user)
+        assert retval
+        assert not(retval.anonymous)
+        return retval
