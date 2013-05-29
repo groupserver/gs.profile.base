@@ -2,4 +2,47 @@
 <configure xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser">
 
+  <!--TODO: Move to gs.profile.base -->
+  <browser:menu 
+    id="user_profile_menu"
+    title="Profile"
+    description="List of actions for the profile owner" />
+  <!--TODO: move to the seperate products. -->
+  <browser:menuItems
+    menu="user_profile_menu"
+    for="Products.CustomUserFolder.interfaces.ICustomUser">
+    <browser:menuItem 
+      action="edit.html"
+      title="Change Profile"
+      description="Change what you show in your profile"
+      order="1"
+      permission="zope2.ManageProperties"/>
+    <browser:menuItem 
+      action="image.html"
+      title="Change Image"
+      description="Change the image that is shown on your profile and posts"
+      order="2"
+      permission="zope2.ManageProperties"/>
+    <browser:menuItem 
+      action="nickname.html"
+      title="Change Nickname"
+      description="Change the link to your profile"
+      order="4"
+      permission="zope2.ManageProperties"/>
+  </browser:menuItems>
+  <!--TODO: Move to gs.profile.base -->
+  <interface 
+    interface=".interfaces.IProfileMenu"
+    type="zope.contentprovider.interfaces.ITALNamespaceData"/>
+  <class class=".menu.GSProfileContextMenuContentProvider">
+    <implements interface=".interfaces.IProfileMenu"/>
+  </class>
+  <adapter
+    name="groupserver.ProfileContextMenu"
+    provides="zope.contentprovider.interfaces.IContentProvider"
+    for="Products.CustomUserFolder.interfaces.ICustomUser
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         zope.interface.Interface"
+    factory=".menu.GSProfileContextMenuContentProvider" />
+
 </configure>
