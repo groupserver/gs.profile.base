@@ -5,15 +5,14 @@ from Products.CustomUserFolder.interfaces import IGSUserInfo
 from interfaces import *
 from zope.app.publisher.browser.menu import getMenu
 from AccessControl.security import newInteraction
-from gs.viewlet import SiteContentProvider
+from contentprovider import ContentProvider
 
 import logging
 log = logging.getLogger('GSProfileContextMenuContentProvider')
 
 
-class GSProfileContextMenuContentProvider(SiteContentProvider):
-    """GroupServer context-menu for the user profile area.
-    """
+class GSProfileContextMenuContentProvider(ContentProvider):
+    """GroupServer context-menu for the user profile area."""
 
     def __init__(self, context, request, view):
         super(GSProfileContextMenuContentProvider, self).__init__(context,
