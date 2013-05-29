@@ -1,29 +1,15 @@
-# coding=utf-8
-from zope.component import createObject
-from AccessControl import getSecurityManager
+# -*- coding: utf-8 -*-
+from zope.cachedescriptors.property import Lazy
 from Products.CustomUserFolder.interfaces import IGSUserInfo
+from gs.viewlet import SiteContentProvider
 
-class ContentProvider(object):
+
+class ContentProvider(SiteContentProvider):
     def __init__(self, user, request, view):
-        self.__parent__ = self.view = view
-        self.__updated = False
+        super(ContentProvider, self).__init__(user, request, view)
+        self.user = user
 
-        self.context = self.user = user
-        self.request = request
-
-        self.__siteInfo = None
-        self.__userInfo = None
-
-    @property
-    def siteInfo(self):
-        if self.__siteInfo == None:
-            self.__siteInfo = \
-                createObject('groupserver.SiteInfo', self.context)
-        return self.__siteInfo
-        
-    @property
+    @Lazy
     def userInfo(self):
-        if self.__userInfo == None:
-            self.__userInfo = IGSUserInfo(self.user)
-        return self.__userInfo
-
+        retval = IGSUserInfo(self.user)
+        return retval
