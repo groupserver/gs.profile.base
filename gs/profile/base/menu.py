@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-from zope.component import createObject
-from zope.pagetemplate.pagetemplatefile import PageTemplateFile
-from Products.CustomUserFolder.interfaces import IGSUserInfo
-from interfaces import *
 from zope.app.publisher.browser.menu import getMenu
+from zope.component import createObject
+from zope.contentprovider.interfaces import UpdateNotCalled
+from zope.pagetemplate.pagetemplatefile import PageTemplateFile
 from AccessControl.security import newInteraction
 from contentprovider import ContentProvider
 
@@ -14,9 +13,9 @@ log = logging.getLogger('GSProfileContextMenuContentProvider')
 class GSProfileContextMenuContentProvider(ContentProvider):
     """GroupServer context-menu for the user profile area."""
 
-    def __init__(self, context, request, view):
-        super(GSProfileContextMenuContentProvider, self).__init__(context,
-                                                                request, view)
+    def __init__(self, user, request, view):
+        super(GSProfileContextMenuContentProvider, self).__init__(user, request,
+                                                                    view)
         self.__updated = False
 
         newInteraction()
@@ -26,16 +25,15 @@ class GSProfileContextMenuContentProvider(ContentProvider):
 
         self.groupsInfo = createObject('groupserver.GroupsInfo',
           self.context)
-        self.userInfo = IGSUserInfo(self.context)
 
-        self.pages = getMenu('user_profile_menu', self.context, self.request)
+        self.pages = getMenu('user_profile_menu', self.user, self.request)
 
         self.requestBase = self.request.URL.split('/')[-1]
         self.userId = self.context.getId()
 
     def render(self):
         if not self.__updated:
-            raise interfaces.UpdateNotCalled
+            raise UpdateNotCalled
 
         pageTemplate = PageTemplateFile(self.pageTemplateFileName)
         return pageTemplate(view=self)
