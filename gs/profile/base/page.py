@@ -6,7 +6,7 @@ from Products.CustomUserFolder.interfaces import IGSUserInfo
 
 class ProfilePage(SitePage):
     def __init__(self, user, request):
-        SitePage.__init__(self, user, request)
+        super(ProfilePage, self).__init__(user, request)
         self.user = user
 
     @Lazy
