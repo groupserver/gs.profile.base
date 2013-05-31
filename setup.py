@@ -32,10 +32,20 @@ setup(name='gs.profile.base',
     zip_safe=True,
     install_requires=[
         'setuptools',
+        'AccessControl',
+        'zope.app.publisher',
+        'zope.cachedescriptors',
+        'zope.component',
+        'zope.contentprovider',
+        'zope.interface',
+        'zope.pagetemplate',
+        'zope.schema',
+        'gs.content.base',
+        'gs.content.form',
+        'gs.viewlet',
         'Products.CustomUserFolder',
-        # -*- Extra requirements: -*-
     ],
     entry_points="""
     # -*- Entry points: -*-
-    """,)
-
+    """,
+)
