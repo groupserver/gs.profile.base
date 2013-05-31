@@ -17,7 +17,7 @@ Introduction
 ============
 
 The product provides the core code for displaying pages, and parts of pages
-to do with profiles. It defines the page_ code, the `content provider`_
+to do with profiles. It defines a page_, form_, the `content provider`_
 abstract base class, and the concrete viewlet_. It also defines a menu_.
 
 Page
@@ -26,6 +26,13 @@ Page
 The ``gs.profile.base.ProfilePage`` is based on the ``SitePage``
 [#sitePage]_, but it defines the ``userInfo`` attribute, that returns a
 object that implements ``IGSUserInfo`` interface.
+
+Form
+====
+
+The ``gs.profile.base.ProfileForm`` is based on the ``SiteForm``, but it
+defines the ``userInfo`` attribute, that returns a object that implements
+``IGSUserInfo`` interface.
 
 Content Provider
 ================
