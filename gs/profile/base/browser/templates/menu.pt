@@ -1,9 +1,11 @@
-<div id="gs-profile-view-menu" tal:define="view options/view;">
+<div id="gs-profile-base-menu" tal:define="view options/view;"
+     role="navigation" aria-labelledby="gs-profile-base-menu-h">
   <div id="contextnav" class="xhtml2-nl">
     <p class="label">
       <a href="#" title="Profile of A. User" class="fn"
-        tal:attributes="title string:Profile of ${view/userInfo/name};
-                        href view/userInfo/url;">Profile</a>
+         id="gs-profile-base-menu-h"
+         tal:attributes="title string:Profile of ${view/userInfo/name};
+                         href view/userInfo/url;">Profile</a>
     </p>
     <ul>
       <tal:block repeat="page view/pages">
@@ -17,4 +19,4 @@
       </tal:block>
     </ul>
   </div><!--contextnav-->
-</div><!--gs-profile-view-menu-->
+</div><!--gs-profile-base-menu-->
