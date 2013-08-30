@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 import os
 from setuptools import setup, find_packages
 from version import get_version
@@ -21,11 +21,11 @@ setup(name='gs.profile.base',
       "Programming Language :: Python",
       "Topic :: Software Development :: Libraries :: Python Modules",
       ],
-    keywords='profile groupserver',
+    keywords='profile groupserver viewlet',
     author='Michael JasonSmith',
     author_email='mpj17@onlinegroups.net',
     url='http://groupserver.org/',
-    license='other',
+    license='ZPL 2.1',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['gs', 'gs.profile'],
     include_package_data=True,
