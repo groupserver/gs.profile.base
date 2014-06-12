@@ -13,7 +13,7 @@
 #
 ##############################################################################
 from zope.cachedescriptors.property import Lazy
-from gs.content.form import SiteForm
+from gs.content.form.base import SiteForm
 from Products.CustomUserFolder.interfaces import IGSUserInfo
 
 
