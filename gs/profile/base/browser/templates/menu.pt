@@ -1,5 +1,6 @@
-<div id="gs-profile-base-menu" tal:define="view options/view;"
-     role="navigation" aria-labelledby="gs-profile-base-menu-h">
+<div id="gs-profile-base-menu" role="navigation"
+     aria-labelledby="gs-profile-base-menu-h"
+     tal:define="view options/view;">
   <div id="contextnav" class="xhtml2-nl">
     <p class="label">
       <a href="#" title="Profile of A. User" class="fn"
